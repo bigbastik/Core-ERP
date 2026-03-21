@@ -1,110 +1,33 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8" />
-  <title>CORE ERP – API Documentation (Full)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      padding: 2rem;
-      line-height: 1.6;
-    }
-    h1, h2, h3 {
-      color: #fff;
-      margin-top: 2rem;
-    }
-    code {
-      background: #1e293b;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      color: #93c5fd;
-    }
-    pre {
-      background: #1e293b;
-      padding: 1rem;
-      border-radius: 8px;
-      overflow-x: auto;
-    }
-    .endpoint {
-      background: #1e293b;
-      padding: 0.6rem 1rem;
-      border-left: 4px solid #22c55e;
-      margin-top: 1rem;
-      border-radius: 6px;
-    }
-    .method {
-      font-weight: bold;
-      color: #22c55e;
-    }
-    a {
-      color: #38bdf8;
-    }
-  </style>
-</head>
-<body>
+# 🚀 CORE ERP – Public API Documentation (V3.0)
 
-<h1>CORE ERP – Public API Documentation (V3.0)</h1>
-<p>
-  Questa documentazione descrive le API pubbliche della piattaforma <strong>CORE ERP Multi‑Tenant</strong>,
-  incluse le estensioni per il modulo di <strong>Social Monitoring & Engagement Analytics</strong>.
-</p>
+Questa documentazione descrive le API pubbliche della piattaforma **CORE ERP Multi‑Tenant**, incluse le estensioni per il modulo di **Social Monitoring & Engagement Analytics**.
 
-<hr>
+---
 
-<h2>📑 Indice</h2>
-<ul>
-  <li><a href="#auth">Autenticazione</a></li>
-  <li><a href="#apikeys">API Keys</a></li>
-  <li><a href="#ratelimit">Rate Limiting</a></li>
-  <li><a href="#endpoints">Endpoints</a>
-    <ul>
-      <li>Customers</li>
-      <li>Invoices</li>
-      <li>Products</li>
-      <li>Stock</li>
-      <li>Accounting</li>
-      <li>Social Monitoring</li>
-    </ul>
-  </li>
-  <li><a href="#errors">Errori</a></li>
-  <li><a href="#webhooks">Webhooks (coming soon)</a></li>
-  <li><a href="#best">Best Practices</a></li>
-</ul>
+## 📑 Indice
 
-<hr>
+- [Autenticazione](#autenticazione)
+- [API Keys](#api-keys)
+- [Rate Limiting](#rate-limiting)
+- [Endpoints](#endpoints)
+  - [Customers](#customers)
+  - [Invoices](#invoices)
+  - [Products](#products)
+  - [Stock](#stock)
+  - [Accounting](#accounting)
+  - [Social Monitoring](#social-monitoring)
+- [Errori](#errori)
+- [Webhooks (coming soon)](#webhooks-coming-soon)
+- [Best Practices](#best-practices)
 
-<h2 id="auth">🔐 Autenticazione</h2>
-<p>
-  L’autenticazione avviene tramite <strong>API Key</strong> generata dal pannello del tenant.
-</p>
+---
 
-<h3>Header richiesto</h3>
-<pre><code>X-API-KEY: {your_api_key}</code></pre>
+## 🔐 Autenticazione
 
-<p>
-  L’API Key identifica automaticamente il <code>tenant_id</code>.
-</p>
+L’autenticazione avviene tramite **API Key** generata dal pannello del tenant.
 
-<hr>
+### Header richiesto
 
-<h2 id="apikeys">🔑 API Keys</h2>
-<p>Ogni tenant possiede una coppia:</p>
-
-<ul>
-  <li><strong>Client ID</strong></li>
-  <li><strong>Secret Key</strong></li>
-</ul>
-
-<p>
-  La Secret Key è salvata in formato <strong>HMAC/SHA256</strong> e non può essere recuperata.
-</p>
-
-<h3>Esempio header completo</h3>
-<pre><code>
-GET /api/v1/customers
 X-API-KEY: 1f92a8c1-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 </code></pre>
 
