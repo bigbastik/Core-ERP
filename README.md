@@ -1,105 +1,26 @@
-# CORE ERP Multi-Tenant – Technical Overview (V3.0)
+# 🌐 CORE ERP Multi‑Tenant – Homepage del Progetto
 
-CORE ERP è una **piattaforma ERP multi-tenant** progettata come **SaaS cloud platform**, con:
+Benvenuto nel repository ufficiale di **CORE ERP Multi‑Tenant**.
 
-- isolamento logico per tenant,
-- edge security Cloudflare,
-- API pubblica con API Keys,
-- automazioni contabili e logistiche,
-- audit logging forense,
-- modulo di **Social Monitoring & Engagement Analytics**.
+👉 **Accedi subito alla homepage completa del progetto (index.html):**  
+### 🔗 https://bigbastik.github.io/Core-ERP/
 
-> Questo repository è una **vetrina tecnica**.  
-> Il codice sorgente dell’applicazione non è pubblico.
+> La landing contiene: panoramica tecnica, moduli, architettura, sicurezza, API Engine, Social Monitoring e molto altro.
 
 ---
 
-## 🌍 Link Ufficiale
+## 📘 Documentazione API
 
-🔗 **Piattaforma:** https://gestionale.bigbastik.de  
-📘 **Documentazione API:** `./docs/index.html`
+La documentazione completa delle API è disponibile qui:
 
----
-
-## 🛡️ Core Engine & Authentication
-
-- Multi-Domain Handshake su `bigbastik.de`
-- JWT Session Interceptor (React)
-- RBAC: Superadmin, Admin, User
-- Ghost Impersonation per accesso controllato ai tenant
+👉 **https://bigbastik.github.io/Core-ERP/docs/index.html
 
 ---
 
-## 🌐 Edge Security (Cloudflare)
+## ℹ️ Informazioni sul repository
 
-- WAF, Anti-DDoS, Bot Management
-- Universal SSL/TLS per ogni tenant
-- Subdomain Orchestration su `*.bigbastik.de`
-- IP backend mascherato
+Questo repository è una **vetrina tecnica** del progetto CORE ERP.  
+Il codice sorgente dell’applicazione non è pubblico.
 
----
-
-## 🏗️ Backend Architecture
-
-- Node.js + Express + PostgreSQL
-- Controllers modulari (auth, admin, invoices, customers, warehouse, accounting, tenants)
-- Isolamento dati via `tenant_id` (UUID)
-- Servizi dedicati:
-  - Accounting & Ledger
-  - Credit Recovery Automation
-  - PDF Engine
-  - Stock Guard
-  - Audit Logging
-
----
-
-## 📊 Frontend & Dashboard
-
-- React 18 + Vite
-- Tailwind CSS + Lucide Icons
-- ThemeContext per brand identity per-tenant
-- KPI globali per sottodominio
-- Layout responsive mobile-first
-
----
-
-## 🔑 Public API Engine
-
-- API Keys per tenant (Client ID + Secret Key)
-- Storage hash HMAC/SHA256
-- API Middleware Tracker
-- Rate Limiting per tenant
-- Documentazione Swagger/OpenAPI (`/api/v1/docs`)
-
----
-
-## 📣 Social Monitoring & Engagement Analytics
-
-Modulo dedicato al monitoraggio delle performance social per ogni tenant:
-
-- Raccolta metriche da canali social (es. Facebook, Instagram, LinkedIn, X)
-- Tracciamento di:
-  - like, commenti, condivisioni, click
-  - reach, impression, CTR
-- Dashboard di correlazione:
-  - campagne social ↔ fatturato
-  - engagement ↔ LTV clienti
-- API dedicate per importare/aggiornare dati social
-
----
-
-## 🧱 Tech Stack
-
-**Frontend:** React 18, Vite, Tailwind CSS  
-**Backend:** Node.js, Express  
-**Database:** PostgreSQL  
-**Security:** JWT, Cloudflare WAF, SSL/TLS  
-**Storage:** PostgreSQL, LocalStorage (sessioni)
-
----
-
-## 📩 Contatti
-
-Per collaborazioni o integrazioni:  
-👉 *https://bigbastik.de - bigbastik@protonmail.ch*
+Struttura del repository:
 
