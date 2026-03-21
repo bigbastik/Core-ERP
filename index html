@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>CORE ERP Multi-Tenant – Technical Overview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="CORE ERP è una piattaforma ERP multi-tenant con architettura SaaS, edge security Cloudflare, API pubblica, automazioni e social monitoring." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-css-reset/dist/reset.min.css" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #050816;
+      color: #e5e7eb;
+      margin: 0;
+      padding: 0;
+    }
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+    h2 {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      color: #fff;
+    }
+    p {
+      line-height: 1.6;
+      color: #d1d5db;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 1.5rem;
+    }
+    .badge {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      background: rgba(15, 23, 42, 0.8);
+      color: #e5e7eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      border-radius: 0.9rem;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top left, #111827, #020617);
+      padding: 1.2rem 1.3rem;
+    }
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+      color: #fff;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card li {
+      font-size: 0.9rem;
+      color: #9ca3af;
+      margin: 0.25rem 0;
+    }
+    .card li::before {
+      content: "•";
+      color: #22c55e;
+      margin-right: 0.4rem;
+    }
+    .cta-row {
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 0.7rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #020617;
+    }
+    .btn-ghost {
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+    }
+    .small {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1>CORE ERP Multi-Tenant</h1>
+    <p>
+      Piattaforma ERP multi-tenant con architettura SaaS, edge security Cloudflare, API pubblica,
+      automazioni contabili e logistiche, audit forense e modulo di Social Monitoring per analisi
+      di interazioni e performance dei canali social.
+    </p>
+
+    <div class="badge-row">
+      <span class="badge">Multi-Tenant SaaS</span>
+      <span class="badge">Node / Express / PostgreSQL</span>
+      <span class="badge">React 18 / Vite</span>
+      <span class="badge">Cloudflare WAF</span>
+      <span class="badge">Public API Engine</span>
+      <span class="badge">Audit Logging</span>
+      <span class="badge">Social Monitoring</span>
+    </div>
+
+    <section class="grid">
+      <div class="card">
+        <h3>Core Engine & Auth</h3>
+        <ul>
+          <li>Login centralizzato con multi-domain handshake.</li>
+          <li>JWT interceptor con session persistence.</li>
+          <li>RBAC: Superadmin, Admin, User.</li>
+          <li>Ghost Impersonation per accesso controllato ai tenant.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Edge Security</h3>
+        <ul>
+          <li>Cloudflare WAF, Anti-DDoS, Bot Management.</li>
+          <li>Universal SSL/TLS su ogni tenant.</li>
+          <li>Subdomain orchestration su *.bigbastik.de.</li>
+          <li>IP backend mascherato.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Backend & Automation</h3>
+        <ul>
+          <li>Controllers modulari (auth, invoices, warehouse, accounting).</li>
+          <li>Isolamento dati via tenant_id (UUID).</li>
+          <li>Accounting, Credit Recovery, Stock Guard.</li>
+          <li>Audit logging forense.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Public API Engine</h3>
+        <ul>
+          <li>API Keys per tenant (Client ID + Secret Key).</li>
+          <li>Storage hash HMAC/SHA256.</li>
+          <li>Rate limiting per tenant.</li>
+          <li>Swagger/OpenAPI su /api/v1/docs.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Frontend & Dashboard</h3>
+        <ul>
+          <li>React 18 + Vite + Tailwind CSS.</li>
+          <li>ThemeContext per brand identity per-tenant.</li>
+          <li>KPI globali per sottodominio.</li>
+          <li>Layout responsive mobile-first.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Social Monitoring & Engagement</h3>
+        <ul>
+          <li>Raccolta centralizzata di metriche social per tenant.</li>
+          <li>Interazioni: like, commenti, condivisioni, click.</li>
+          <li>Performance per canale (es. Facebook, Instagram, LinkedIn, X).</li>
+          <li>Dashboard di correlazione tra campagne social e fatturato.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="cta-row">
+      <a href="https://gestionale.bigbastik.de" class="btn btn-primary" target="_blank">Apri la piattaforma</a>
+      <a href="./docs/index.html" class="btn btn-ghost">Documentazione API</a>
+    </div>
+
+    <p class="small">Questo repository è una vetrina tecnica. Il codice sorgente non è pubblico.</p>
+  </main>
+</body>
+</html>
