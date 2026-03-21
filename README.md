@@ -57,7 +57,7 @@ Piattaforma ERP modulare, scalabile e multi‑tenant con architettura SaaS, edge
 ---
 
 ## 📘 Documentazione API  
-🔗 **https://bigbastik.github.io/Core-ERP/docs/ondex.html**
+🔗 **https://bigbastik.github.io/Core-ERP/docs/index.md**
 
 ---
 
