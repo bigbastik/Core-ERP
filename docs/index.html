@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>CORE ERP – API Documentation (Full)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #fff;
+      margin-top: 2rem;
+    }
+    code {
+      background: #1e293b;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      color: #93c5fd;
+    }
+    pre {
+      background: #1e293b;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .endpoint {
+      background: #1e293b;
+      padding: 0.6rem 1rem;
+      border-left: 4px solid #22c55e;
+      margin-top: 1rem;
+      border-radius: 6px;
+    }
+    .method {
+      font-weight: bold;
+      color: #22c55e;
+    }
+    a {
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+
+<h1>CORE ERP – Public API Documentation (V3.0)</h1>
+<p>
+  Questa documentazione descrive le API pubbliche della piattaforma <strong>CORE ERP Multi‑Tenant</strong>,
+  incluse le estensioni per il modulo di <strong>Social Monitoring & Engagement Analytics</strong>.
+</p>
+
+<hr>
+
+<h2>📑 Indice</h2>
+<ul>
+  <li><a href="#auth">Autenticazione</a></li>
+  <li><a href="#apikeys">API Keys</a></li>
+  <li><a href="#ratelimit">Rate Limiting</a></li>
+  <li><a href="#endpoints">Endpoints</a>
+    <ul>
+      <li>Customers</li>
+      <li>Invoices</li>
+      <li>Products</li>
+      <li>Stock</li>
+      <li>Accounting</li>
+      <li>Social Monitoring</li>
+    </ul>
+  </li>
+  <li><a href="#errors">Errori</a></li>
+  <li><a href="#webhooks">Webhooks (coming soon)</a></li>
+  <li><a href="#best">Best Practices</a></li>
+</ul>
+
+<hr>
+
+<h2 id="auth">🔐 Autenticazione</h2>
+<p>
+  L’autenticazione avviene tramite <strong>API Key</strong> generata dal pannello del tenant.
+</p>
+
+<h3>Header richiesto</h3>
+<pre><code>X-API-KEY: {your_api_key}</code></pre>
+
+<p>
+  L’API Key identifica automaticamente il <code>tenant_id</code>.
+</p>
+
+<hr>
+
+<h2 id="apikeys">🔑 API Keys</h2>
+<p>Ogni tenant possiede una coppia:</p>
+
+<ul>
+  <li><strong>Client ID</strong></li>
+  <li><strong>Secret Key</strong></li>
+</ul>
+
+<p>
+  La Secret Key è salvata in formato <strong>HMAC/SHA256</strong> e non può essere recuperata.
+</p>
+
+<h3>Esempio header completo</h3>
+<pre><code>
+GET /api/v1/customers
+X-API-KEY: 1f92a8c1-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+</code></pre>
+
+<hr>
+
+<h2 id="ratelimit">🚦 Rate Limiting</h2>
+<p>
+  Ogni tenant ha un limite di:
+</p>
+
+<pre><code>100 richieste / minuto</code></pre>
+
+<p>
+  In caso di superamento viene restituito:
+</p>
+
+<pre><code>{
+  "error": "rate_limit_exceeded",
+  "retry_after": 60
+}
+</code></pre>
+
+<hr>
+
+<h2 id="endpoints">📌 Endpoints Principali</h2>
+
+<h3>👥 Customers</h3>
+
+<div class="endpoint">
+  <span class="method">GET</span> /api/v1/customers
+</div>
+<p>Restituisce la lista clienti del tenant.</p>
+
+<div class="endpoint">
+  <span class="method">POST</span> /api/v1/customers
+</div>
+<p>Crea un nuovo cliente.</p>
+
+<pre><code>{
+  "name": "Mario Rossi",
+  "email": "mario@example.com",
+  "vat": "IT12345678901",
+  "payment_terms": 30
+}
+</code></pre>
+
+---
+
+<h3>🧾 Invoices</h3>
+
+<div class="endpoint">
+  <span class="method">GET</span> /api/v1/invoices
+</div>
+
+<div class="endpoint">
+  <span class="method">POST</span> /api/v1/invoices
+</div>
+
+<pre><code>{
+  "customer_id": "uuid",
+  "items": [
+    { "product_id": "uuid", "qty": 2 }
+  ]
+}
+</code></pre>
+
+---
+
+<h3>📦 Products</h3>
+
+<div class="endpoint">
+  <span class="method">GET</span> /api/v1/products
+</div>
+
+<div class="endpoint">
+  <span class="method">POST</span> /api/v1/products
+</div>
+
+<pre><code>{
+  "name": "Prodotto A",
+  "sku": "A-001",
+  "initial_stock": 50
+}
+</code></pre>
+
+---
+
+<h3>📉 Stock Movements</h3>
+
+<div class="endpoint">
+  <span class="method">GET</span> /api/v1/stock
+</div>
+
+<div class="endpoint">
+  <span class="method">POST</span> /api/v1/stock/in
+</div>
+
+<div class="endpoint">
+  <span class="method">POST</span> /api/v1/stock/out
+</div>
+
+---
+
+<h3>📘 Accounting</h3>
+
+<div class="endpoint">
+  <span class="method">GET</span> /api/v1/accounting/ledger
+</div>
+
+<div class="endpoint">
+  <span class="method">POST</span> /api/v1/accounting/entry
+</div>
+
+<pre><code>{
+  "type": "debit",
+  "amount": 120.50,
+  "description": "Pagamento fattura"
+}
+</code></pre>
+
+---
+
+<h3>📣 Social Monitoring & Engagement</h3>
+
+<p>
+  Il modulo Social Monitoring permette di tracciare le performance dei canali social per ogni tenant.
+</p>
+
+<div class="endpoint">
+  <span class="method">GET</span> /api/v1/social/channels
+</div>
+<p>Restituisce la lista dei canali social collegati al tenant.</p>
+
+<div class="endpoint">
+  <span class="method">GET</span> /api/v1/social/metrics
+</div>
+<p>Restituisce le metriche aggregate per periodo.</p>
+
+<pre><code>
+GET /api/v1/social/metrics?from=2025-01-01&to=2025-01-31&channel=instagram
+</code></pre>
+
+<p>Risposta esempio:</p>
+<pre><code>{
+  "channel": "instagram",
+  "from": "2025-01-01",
+  "to": "2025-01-31",
+  "metrics": {
+    "likes": 1240,
+    "comments": 210,
+    "shares": 85,
+    "clicks": 430,
+    "impressions": 18200,
+    "reach": 9400
+  }
+}
+</code></pre>
+
+<div class="endpoint">
+  <span class="method">POST</span> /api/v1/social/events
+</div>
+<p>Endpoint per importare eventi social (se usato in modalità push da integrazioni esterne).</p>
+
+<pre><code>{
+  "channel": "facebook",
+  "external_id": "post_123",
+  "type": "like",
+  "count": 10,
+  "timestamp": "2025-01-15T10:30:00Z"
+}
+</code></pre>
+
+<hr>
+
+<h2 id="errors">❗ Errori</h2>
+
+<h3>Formato errore standard</h3>
+<pre><code>{
+  "error": "invalid_request",
+  "message": "Missing field: customer_id"
+}
+</code></pre>
+
+<h3>Errori comuni</h3>
+<ul>
+  <li><code>unauthorized</code> – API Key mancante o invalida</li>
+  <li><code>rate_limit_exceeded</code></li>
+  <li><code>not_found</code></li>
+  <li><code>validation_error</code></li>
+</ul>
+
+<hr>
+
+<h2 id="webhooks">📡 Webhooks (Coming Soon)</h2>
+<p>
+  La piattaforma supporterà eventi come:
+</p>
+
+<ul>
+  <li><code>invoice.created</code></li>
+  <li><code>invoice.paid</code></li>
+  <li><code>stock.low</code></li>
+  <li><code>customer.created</code></li>
+  <li><code>social.metrics.updated</code></li>
+</ul>
+
+<hr>
+
+<h2 id="best">🧠 Best Practices</h2>
+
+<ul>
+  <li>Rigenerare periodicamente le API Keys</li>
+  <li>Usare sempre HTTPS (Cloudflare SSL)</li>
+  <li>Limitare le chiamate batch e rispettare il rate limit</li>
+  <li>Non esporre mai la Secret Key lato client</li>
+  <li>Correlare metriche social con KPI di fatturato per analisi avanzate</li>
+</ul>
+
+<hr>
+
+<p style="margin-top:2rem; color:#64748b;">
+  CORE ERP Multi-Tenant – © BigBastik
+</p>
+
+</body>
+</html>
