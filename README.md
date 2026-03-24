@@ -1,81 +1,92 @@
-# 🚀 **CORE ERP Multi‑Tenant**
-Piattaforma ERP modulare, scalabile e multi‑tenant con architettura SaaS, edge security Cloudflare, API pubblica, automazioni contabili/logistiche e Social Monitoring.
+# 🚀 **CORE ERP Multi‑Tenant System**
+**Piattaforma SaaS di nuova generazione: Modulare, Scalabile e Social‑Integrated.**
+
+Gestione contabile, logistica, CRM e automazioni social in un unico ecosistema cloud, ottimizzato per agenzie, commercialisti e PMI digitali.
 
 ---
 
-## 🌍 **Richiedi Subito Un'Istanza di Prova**
-🔗 **https://gestionale.bigbastik.de**
+## 🌍 **Accesso Istanza Origin**
+🔗 **https://gestionale.bigbastik.de**  
+*Orchestrazione dinamica dei sottodomini abilitata via Cloudflare.*
 
 ---
 
-## 🧩 **Moduli Principali**
+# 🧠 **Perché CORE ERP?**
+- Multi‑Tenant nativo  
+- Architettura moderna (React + Node + PostgreSQL)  
+- Automazioni contabili e social integrate  
+- Sicurezza enterprise (Cloudflare WAF + SSL/TLS)  
+- API pubblica con Client ID + Secret Key  
+- Branding per‑tenant (ThemeContext)  
 
 ---
 
-### 🔐 **Autenticazione & Multi‑Tenancy**
-- **Multi‑Domain Handshake** (login centralizzato)
-- **JWT Session Interceptor**
-- **RBAC:** Superadmin / Admin / User
-- **Ghost Impersonation:** accesso ai tenant senza credenziali
+# 🛠️ **Tech Stack & Infrastructure**
+- **Frontend:** React 18 (Vite), Tailwind CSS, Lucide Icons  
+- **Backend:** Node.js (Express) con controller modulari  
+- **Database:** PostgreSQL con isolamento logico via `tenant_id`  
+- **Automazione:** Node‑cron Worker per social publishing e task asincroni  
+- **Security:** Cloudflare WAF, SSL/TLS Universal, JWT Session Interceptor  
 
 ---
 
-### 🛡️ **Edge Security (Cloudflare)**
-- **WAF**, Anti‑DDoS, Bot Management  
-- **Universal SSL/TLS**  
-- **Subdomain Orchestration**  
-- **IP backend mascherato**
+# 🧩 **Moduli Core & Operativi**
+
+## 📦 **Magazzino & Logistica (Stock Guard)**
+- **Giacenze in tempo reale** con protezione sottoscorta  
+- **Movimentazione automatizzata** (carico/scarico)  
+- **Inventory Audit** per tracciabilità completa  
 
 ---
 
-### 🏗️ **Backend Architecture**
-- **Node.js + Express + PostgreSQL**
-- **Controllers modulari**
-- **Isolamento dati** via `tenant_id`
-- **Servizi dedicati:**
-  - Accounting & Ledger  
-  - Credit Recovery Automation  
-  - PDF Engine  
-  - Stock Guard  
-  - Audit Logging  
+## 📄 **Ciclo Fatturazione & Documentale**
+- **Fatturazione elettronica** (fatture, proforma, note di credito)  
+- **PDF Engine** per documenti brandizzati  
+- **Automazione flussi** da preventivo → ordine → fattura  
 
 ---
 
-### 📊 **Dashboard & Frontend**
-- **React 18 + Vite**
-- **Tailwind CSS + Lucide Icons**
-- **ThemeContext** per brand identity per‑tenant
-- **KPI globali** per sottodominio
-- **Layout responsive** mobile‑first
+## 💰 **Contabilità & Prima Nota**
+- **Registrazioni automatiche** entrate/uscite  
+- **Ledger & mastrini** con riconciliazione rapida  
+- **Credit Recovery** con solleciti automatici  
 
 ---
 
-### 🔑 **Public API Engine**
-- **API Keys** per tenant (Client ID + Secret Key)
-- **Storage hash HMAC/SHA256**
-- **API Middleware Tracker**
-- **Rate Limiting** per tenant
-- **Documentazione Swagger/OpenAPI**
+## 🤝 **CRM (Customer Relationship Management)**
+- **Anagrafica centralizzata** clienti/fornitori  
+- **Pipeline di vendita** con storico interazioni  
+- **Segmentazione avanzata** per campagne marketing  
 
 ---
 
-### 📣 **Social Monitoring & Engagement Analytics**
-- **Raccolta metriche social** (Instagram, Facebook, LinkedIn, X)
-- **Interazioni:** like, commenti, condivisioni, click
-- **KPI:** reach, impression, CTR
-- **Correlazione** campagne social ↔ fatturato
-- **API dedicate** per importare eventi social
+## 📅 **Social Planner & Automation**
+- **Calendario drag‑and‑drop** ottimizzato mobile  
+- **Direct Publishing** su Instagram e Facebook via Meta API  
+- **Social Maggiordomo:** worker dedicato alla pubblicazione automatica  
 
 ---
 
-## 📘 **Documentazione API**
-🔗 **https://bigbastik.github.io/Core-ERP/docs/index.md**
+# 🛡️ **Edge Security & Performance**
+- **Ghost Impersonation:** accesso Superadmin ai tenant  
+- **ThemeContext:** brand identity dinamica per ogni sottodominio  
+- **Public API Engine:** Client ID + Secret Key (HMAC/SHA256)  
 
 ---
 
-## 🧱 **Tech Stack**
-- **Frontend:** React 18, Vite, Tailwind CSS  
-- **Backend:** Node.js, Express  
-- **Database:** PostgreSQL  
-- **Security:** JWT, Cloudflare WAF, SSL/TLS  
-- **Storage:** PostgreSQL, LocalStorage  
+# 📘 **Developer Resources**
+- **Documentazione API:** https://bigbastik.github.io/Core-ERP/docs/index.md  
+- **Tenant Admin:** `g_admin`  
+
+---
+
+# 💬 **Richiedi una Demo**
+Vuoi provare CORE ERP per la tua azienda o agenzia?
+
+👉 **Contattaci per una demo personalizzata**  
+📩 bigbastik@protonmail.ch  
+
+---
+
+# © 2026 **CORE ERP**  
+*L'ecosistema completo per il business moderno.*
